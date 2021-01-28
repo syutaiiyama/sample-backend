@@ -19,8 +19,10 @@ export class AddressService {
   }
 
   async create(createAddressDto: CreateAddressDto, user: User): Promise<User> {
+    this.loggerService.info('called create');
     const savedAddress = await this.connection.transaction(async (manager) => {
       const addressRepository = manager.getRepository(Address);
+      console.log(user);
       const address = await addressRepository.create({
         userId: user.id,
         ...createAddressDto,

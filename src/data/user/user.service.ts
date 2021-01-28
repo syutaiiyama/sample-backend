@@ -12,7 +12,6 @@ import { StripeService } from '../../infra/stripe/stripe.service';
 import { CardService } from './card/card.service';
 import { GetUserDtoForShop } from './dto/get-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { Address } from './address/address.entity';
 
 @Injectable()
 export class UserService {
@@ -49,17 +48,6 @@ export class UserService {
       const user = await userRepository.create(createUserRequest);
       const response = await userRepository.save(user);
 
-      const createAddressRequest = {
-        city: ' ',
-        prefecture: ' ',
-        addressLine: ' ',
-        tel: ' ',
-        postalCode: ' ',
-        userId: response.id,
-      };
-      const addressRepository = manager.getRepository(Address);
-      const address = await addressRepository.create(createAddressRequest);
-      await addressRepository.save(address);
       return response;
     });
     return user;
@@ -102,12 +90,12 @@ export class UserService {
           email: userData.email,
         },
         address: {
-          postalCode: userData.address.postalCode,
-          prefecture: userData.address.prefecture,
-          city: userData.address.city,
-          addressLine: userData.address.addressLine,
-          tel: userData.address.tel,
-          building: userData.address.building,
+          postalCode: userData.address?.postalCode,
+          prefecture: userData.address?.prefecture,
+          city: userData.address?.city,
+          addressLine: userData.address?.addressLine,
+          tel: userData.address?.tel,
+          building: userData.address?.building,
         },
       };
       return response;

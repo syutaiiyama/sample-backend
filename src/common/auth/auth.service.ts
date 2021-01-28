@@ -36,9 +36,9 @@ export class AuthService {
         idToken,
         FirebaseApp.SHOP,
       );
-      if (process.env.NODE_ENV === 'development') {
-        if (idToken === 'test-id-token-user') return true;
-      }
+      // if (process.env.NODE_ENV === 'development') {
+      //   if (idToken === 'test-id-token-user') return true;
+      // }
       // NOTE: {scope: TRANSIENT} な LoggerModule を import した UserModule を Guards には import できない
       return await this.userRepository.findOne({ uid: userInfo.uid });
     } catch (error) {
