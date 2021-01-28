@@ -49,17 +49,6 @@ export class UserService {
       const user = await userRepository.create(createUserRequest);
       const response = await userRepository.save(user);
 
-      const createAddressRequest = {
-        city: ' ',
-        prefecture: ' ',
-        addressLine: ' ',
-        tel: ' ',
-        postalCode: ' ',
-        userId: response.id,
-      };
-      const addressRepository = manager.getRepository(Address);
-      const address = await addressRepository.create(createAddressRequest);
-      await addressRepository.save(address);
       return response;
     });
     return user;
