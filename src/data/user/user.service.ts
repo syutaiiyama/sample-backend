@@ -102,12 +102,12 @@ export class UserService {
           email: userData.email,
         },
         address: {
-          postalCode: userData.address.postalCode,
-          prefecture: userData.address.prefecture,
-          city: userData.address.city,
-          addressLine: userData.address.addressLine,
-          tel: userData.address.tel,
-          building: userData.address.building,
+          postalCode: userData.address?.postalCode,
+          prefecture: userData.address?.prefecture,
+          city: userData.address?.city,
+          addressLine: userData.address?.addressLine,
+          tel: userData.address?.tel,
+          building: userData.address?.building,
         },
       };
       return response;
