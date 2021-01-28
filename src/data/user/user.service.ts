@@ -12,7 +12,6 @@ import { StripeService } from '../../infra/stripe/stripe.service';
 import { CardService } from './card/card.service';
 import { GetUserDtoForShop } from './dto/get-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { Address } from './address/address.entity';
 
 @Injectable()
 export class UserService {
