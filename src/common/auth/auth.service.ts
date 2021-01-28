@@ -17,10 +17,10 @@ export class AuthService {
   async validateAdminUser(request: Request): Promise<boolean> {
     try {
       const idToken = request.headers['x-auth-key'];
-      // テスト用
-      if (process.env.NODE_ENV !== 'production') {
-        if (idToken === 'test-id-token-admin-user') return true;
-      }
+      // テスト用 adminサイト作成し次第if分岐を復活させる
+      // if (process.env.NODE_ENV !== 'production') {
+      if (idToken === 'test-id-token-admin-user') return true;
+      // }
       await this.firebaseService.verifyIdToken(idToken, FirebaseApp.ADMIN);
       // Admin は DB で User を保持していないので、 boolean で返す
       return true;
